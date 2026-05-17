@@ -12,3 +12,4 @@ chromadb
 streamlit
 python-multipart
 sentence-transformers
+pypdf
