@@ -11,9 +11,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Setup
-groq_api_key = os.getenv("GROQ_API_KEY")
+# Setup - Use st.secrets for Streamlit Cloud, fallback to os.getenv for local
+groq_api_key = st.secrets.get("GROQ_API_KEY") or os.getenv("GROQ_API_KEY")
 llm = ChatGroq(model="groq/compound", groq_api_key=groq_api_key)
+hf_token = st.secrets.get("HF_TOKEN") or os.getenv("HF_TOKEN")
+os.environ['HF_TOKEN'] = hf_token
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 # Streamlit UI
