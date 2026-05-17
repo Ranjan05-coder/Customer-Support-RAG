@@ -11,3 +11,4 @@ langchain_core
 chromadb
 streamlit
 python-multipart
+sentence-transformers
